@@ -8,8 +8,6 @@
 class FBubbleSpacePluginModule : public IModuleInterface, public FSelfRegisteringExec
 {
 public:
-
-	/** IModuleInterface implementation */
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
 
