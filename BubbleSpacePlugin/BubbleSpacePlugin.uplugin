@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "BubbleSpacePlugin",
+	"Description": "The goal of this component is to calculate an area around the actor it is attached to and based on these values to calculate a width and a height that can be used to modify a reverb (or a game parameter in general) in order to dinamically adapt to the environment.",
+	"Category": "Other",
+	"CreatedBy": "Mauro Cirafisi",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "BubbleSpacePlugin",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault"
+		}
+	]
+}
