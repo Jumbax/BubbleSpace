@@ -47,12 +47,43 @@ You will find a window and a few commands for debug aswell.
 
 ### Functions:
 
+- GetWidthTargetValue(): return a 0-1 value that represent how much space your actor has around him, in the horizontal plane, based on the HorizontalRaysDistance value
+- GetHeightTargetValue(): return a 0-1 value that represent how much space your actor has around him, in the vertical plane, based on the VerticalRaysDistance value
+- GetHorizontalRaysDistance(): return the horizontal raycast width length
+- SetHorizontalRaysDistance(const float InHorizontalRaysDistance): set your custom horizontal raycast width length
+- GetVerticalRaysDistance(): return the vertical raycast width length
+- SetVerticalRaysDistance(const float InVerticalRaysDistance): set your custom vertical raycast width length
+- IsDrawingHorizontalRays(): return true if the component is drawing the horizontal raycast
+- ShouldDrawHorizontalRays(const bool InShouldDrawHorizontalRays): set true if you want to draw the horizontal raycast
+- IsDrawingVerticalRays(): return true if the component is drawing the vertical raycast
+- ShouldDrawVerticalRays(const bool InShouldDrawVerticalRays): set true if you want to draw the vertical raycast
+- IsDrawingShape(): return true if the component is drawing the cone shape
+- ShouldDrawShape(const bool InShouldDrawShape): set true if you want to draw the cone shape
+- ToggleShape(): toggle the ShouldDrawShape, if it’s true will became false and viceversa
+- ToggleDrawHRays(): toggle the ShouldDrawHorizontalRays, if it’s true will became false and viceversa
+- ToggleDrawVRays(): toggle the ShouldDrawVerticalRays, if it’s true will became false and viceversa
+
 --- 
 
 ### Window:
 
+![Cattura5](https://user-images.githubusercontent.com/70896924/232245963-a21fced6-583e-460d-9b51-6720b6372447.png)
+
+- Toggle Draw Shape: Call ToggleShape() 
+- Toggle Draw Horizontal Rays: Call ToggleDrawHRays()
+- Toggle Draw Vertical Rays: ToggleDrawVRays()
+- Horizontal Rays Distances: Use this slider to change the HorizontalRaysDistances at runtime and modify your Actor's area
+- Vertical Rays Distances: Use this slider to change the VerticalRaysDistances at runtime and modify your Actor's area
+- Horizontal Distance Value: Show the HorizontalRaysDistances value
+- Vertical Distance Value: Show the VerticalRaysDistances value
+- Width Value: Show the 0-1 value that is an avarage of the various horizontal raycast around your actor
+- Height Value: Show the 0-1 value that is an avarage of the various vertical raycast around your actor
 ---
 
 ### Commands:
 
+- BubbleSpace Tab: Open the BubbleSpaceComponent window
+- BubbleSpace DrawShape: Call ToggleShape() 
+- BubbleSpace DrawHRays: Call ToggleDrawHRays()
+- BubbleSpace DrawVRays: ToggleDrawVRays()
 ---
