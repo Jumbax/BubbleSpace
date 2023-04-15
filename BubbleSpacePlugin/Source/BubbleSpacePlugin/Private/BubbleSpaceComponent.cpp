@@ -25,7 +25,7 @@ void UBubbleSpaceComponent::DoHorizontalRay(const float Offset)
 {
 	FHitResult HitResult;
 	FVector Start = GetComponentLocation();
-	FVector RotationOffset = GetOwner()->GetActorForwardVector().RotateAngleAxis(Offset, FVector::UpVector) * HorizontalRaysDistance;
+	FVector RotationOffset = GetOwner()->GetActorForwardVector().RotateAngleAxis(Offset, FVector::UpVector) * HorizontalRaysLength;
 	FVector End = Start + RotationOffset;
 	FCollisionQueryParams Params;
 	Params.AddIgnoredActor(GetOwner());
@@ -36,7 +36,7 @@ void UBubbleSpaceComponent::DoHorizontalRay(const float Offset)
 	}
 	else
 	{
-		HorizontalDistances.Add(HorizontalRaysDistance);
+		HorizontalDistances.Add(HorizontalRaysLength);
 	}
 	if (bDrawHorizontalRays)
 	{
@@ -107,7 +107,7 @@ void UBubbleSpaceComponent::DoVerticalRay(const float Offset)
 	FHitResult HitResult;
 	FVector Start = GetComponentLocation() + GetOwner()->GetActorForwardVector().RotateAngleAxis(Offset, FVector::UpVector) * 100.f;
 	FVector Direction = GetOwner()->GetActorUpVector();
-	FVector End = Start + Direction * VerticalRaysDistance;
+	FVector End = Start + Direction * VerticalRaysLength;
 	FCollisionQueryParams Params;
 	Params.AddIgnoredActor(GetOwner());
 
@@ -117,7 +117,7 @@ void UBubbleSpaceComponent::DoVerticalRay(const float Offset)
 	}
 	else
 	{
-		VerticalDistances.Add(VerticalRaysDistance);
+		VerticalDistances.Add(VerticalRaysLength);
 	}
 	if (bDrawVerticalRays)
 	{
@@ -161,8 +161,8 @@ void UBubbleSpaceComponent::EvaluateHeight()
 
 void UBubbleSpaceComponent::LerpWidthHeightTargetValue()
 {
-	float TargetWidth = OldBubbleWidth > 0 ? OldBubbleWidth : HorizontalRaysDistance;
-	float TargetHeight = OldBubbleHeight > 0 ? OldBubbleHeight : VerticalRaysDistance;
+	float TargetWidth = OldBubbleWidth > 0 ? OldBubbleWidth : HorizontalRaysLength;
+	float TargetHeight = OldBubbleHeight > 0 ? OldBubbleHeight : VerticalRaysLength;
 	FrameCount++;
 	if (FrameCount >= 16)
 	{
@@ -177,45 +177,45 @@ void UBubbleSpaceComponent::DrawShape()
 	if (bDrawShape)
 	{
 		FVector Start = GetOwner()->GetActorLocation() + GetOwner()->GetActorUpVector() * 150.f;
-		float ConeSize = FMath::GetMappedRangeValueClamped(FVector2D(0.f, HorizontalRaysDistance), FVector2D(1.f, 70.f), BubbleWidth);
-		float ConeLength = FMath::GetMappedRangeValueClamped(FVector2D(0.f, VerticalRaysDistance), FVector2D(30.f, 70.f), BubbleHeight);
+		float ConeSize = FMath::GetMappedRangeValueClamped(FVector2D(0.f, HorizontalRaysLength), FVector2D(1.f, 70.f), BubbleWidth);
+		float ConeLength = FMath::GetMappedRangeValueClamped(FVector2D(0.f, VerticalRaysLength), FVector2D(30.f, 70.f), BubbleHeight);
 		DrawDebugCone(GetWorld(), Start, -GetOwner()->GetActorUpVector(), ConeLength, FMath::DegreesToRadians(ConeSize), FMath::DegreesToRadians(ConeSize), 12, FColor::Green, false, -1.f, 0, 2.f);
 	}
 }
 
 float UBubbleSpaceComponent::GetWidthTargetValue() const
 {
-	return BubbleWidth / HorizontalRaysDistance;
+	return BubbleWidth / HorizontalRaysLength;
 }
 
 float UBubbleSpaceComponent::GetHeightTargetValue() const
 {
-	return BubbleHeight / VerticalRaysDistance;
+	return BubbleHeight / VerticalRaysLength;
 }
 
 float UBubbleSpaceComponent::GetHorizontalRaysLength() const
 {
-	return HorizontalRaysDistance;
+	return HorizontalRaysLength;
 }
 
-void UBubbleSpaceComponent::SetHorizontalRaysLength(const float InHorizontalRaysDistance)
+void UBubbleSpaceComponent::SetHorizontalRaysLength(const float InHorizontalRaysLength)
 {
-	if (InHorizontalRaysDistance > 0)
+	if (InHorizontalRaysLength > 0)
 	{
-		HorizontalRaysDistance = InHorizontalRaysDistance;
+		HorizontalRaysLength = InHorizontalRaysLength;
 	}
 }
 
 float UBubbleSpaceComponent::GetVerticalRaysLength() const
 {
-	return VerticalRaysDistance;
+	return VerticalRaysLength;
 }
 
-void UBubbleSpaceComponent::SetVerticalRaysLength(const float InVerticalRaysDistance)
+void UBubbleSpaceComponent::SetVerticalRaysLength(const float InVerticalRaysLength)
 {
-	if (InVerticalRaysDistance > 0)
+	if (InVerticalRaysLength > 0)
 	{
-		VerticalRaysDistance = InVerticalRaysDistance;
+		VerticalRaysLength = InVerticalRaysLength;
 	}
 }
 

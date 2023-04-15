@@ -22,13 +22,13 @@ public:
 		virtual float GetHorizontalRaysLength() const;
 
 	UFUNCTION(BlueprintCallable, Category = "Settings")
-		virtual void SetHorizontalRaysLength(const float InHorizontalRaysDistance);
+		virtual void SetHorizontalRaysLength(const float InHorizontalRaysLength);
 
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Settings")
 		virtual float GetVerticalRaysLength() const;
 
 	UFUNCTION(BlueprintCallable, Category = "Settings")
-		virtual void SetVerticalRaysLength(const float InVerticalRaysDistance);
+		virtual void SetVerticalRaysLength(const float InVerticalRaysLength);
 
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Settings")
 		virtual bool IsDrawingHorizontalRays() const;
@@ -89,10 +89,10 @@ protected:
 	virtual void LerpWidthHeightTargetValue();
 
 	UPROPERTY(VisibleAnywhere, Category = "Settings")
-		float HorizontalRaysDistance = 4000.f;
+		float HorizontalRaysLength = 4000.f;
 
 	UPROPERTY(VisibleAnywhere, Category = "Settings")
-		float VerticalRaysDistance = 1000.f;
+		float VerticalRaysLength = 1000.f;
 
 	UPROPERTY(VisibleAnywhere, Category = "Settings")
 		bool bDrawHorizontalRays = false;

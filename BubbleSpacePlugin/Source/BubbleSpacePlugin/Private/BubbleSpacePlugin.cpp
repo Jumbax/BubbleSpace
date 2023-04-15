@@ -91,39 +91,39 @@ TSharedRef<SDockTab> FBubbleSpacePluginModule::SpawnBubbleSpaceTab(const FSpawnT
 				+ SVerticalBox::Slot().AutoHeight().HAlign(EHorizontalAlignment::HAlign_Left).Padding(2, 4, 2, 2)
 		[
 			SNew(STextBlock)
-			.Text(LOCTEXT("HorizontalRayText", "Horizontal Rays Length"))
+			.Text(LOCTEXT("HorizontalRayLengthText", "Horizontal Rays Length"))
 		]
 	+ SVerticalBox::Slot().AutoHeight().Padding(2, 2, 2, 2)
 		[
 			SNew(SSlider)
 			.MinValue(0.1f)
 		.MaxValue(10000.f)
-		.OnValueChanged_Raw(this, &FBubbleSpacePluginModule::OnHorizontalRaysDistanceValueChanged)
+		.OnValueChanged_Raw(this, &FBubbleSpacePluginModule::OnHorizontalRaysLengthValueChanged)
 		]
 	+ SVerticalBox::Slot().AutoHeight().HAlign(EHorizontalAlignment::HAlign_Left).Padding(2, 2, 2, 2)
 		[
 			SNew(STextBlock)
-			.Text(LOCTEXT("VerticalRayText", "Vertical Rays Length"))
+			.Text(LOCTEXT("VerticalRayLengthText", "Vertical Rays Length"))
 		]
 	+ SVerticalBox::Slot().AutoHeight().Padding(2, 2, 2, 2)
 		[
 			SNew(SSlider)
 			.MinValue(0.1f)
 		.MaxValue(10000.f)
-		.OnValueChanged_Raw(this, &FBubbleSpacePluginModule::OnVerticalRaysDistanceValueChanged)
+		.OnValueChanged_Raw(this, &FBubbleSpacePluginModule::OnVerticalRaysLengthValueChanged)
 		]
 	+ SVerticalBox::Slot().AutoHeight().HAlign(EHorizontalAlignment::HAlign_Left).Padding(2, 4, 2, 2)
 		[
 			SNew(STextBlock).Text_Lambda([this]() -> FText
 				{
-					return FText::Format(LOCTEXT("HorizontalRayDistanceValue", "Horizontal Distance Value: {HorizontalDistanceValue}"), GetBubbleSpaceHorizontalRaysDistance());
+					return FText::Format(LOCTEXT("HorizontalRayDistanceValue", "Horizontal Rays Length Value: {HorizontalLengthValue}"), GetBubbleSpaceHorizontalRaysLength());
 				})
 		]
 	+ SVerticalBox::Slot().AutoHeight().HAlign(EHorizontalAlignment::HAlign_Left).Padding(2, 4, 2, 2)
 		[
 			SNew(STextBlock).Text_Lambda([this]() -> FText
 				{
-					return FText::Format(LOCTEXT("VerticalRayDistanceValue", "Vertical Distance Value: {VerticalDistanceValue}"), GetBubbleSpaceVerticalRaysDistance());
+					return FText::Format(LOCTEXT("VerticalRayDistanceValue", "Vertical Rays Length Value: {VerticalLengthValue}"), GetBubbleSpaceVerticalRaysLength());
 				})
 		]
 	+ SVerticalBox::Slot().AutoHeight().HAlign(EHorizontalAlignment::HAlign_Left).Padding(2, 4, 2, 2)
@@ -185,7 +185,7 @@ UBubbleSpaceComponent* FBubbleSpacePluginModule::GetBubbleSpaceComponent()
 	return nullptr;
 }
 
-void FBubbleSpacePluginModule::OnHorizontalRaysDistanceValueChanged(const float Value)
+void FBubbleSpacePluginModule::OnHorizontalRaysLengthValueChanged(const float Value)
 {
 	UBubbleSpaceComponent* BubbleSpaceComponent = GetBubbleSpaceComponent();
 	if (BubbleSpaceComponent)
@@ -194,7 +194,7 @@ void FBubbleSpacePluginModule::OnHorizontalRaysDistanceValueChanged(const float 
 	}
 }
 
-void FBubbleSpacePluginModule::OnVerticalRaysDistanceValueChanged(const float Value)
+void FBubbleSpacePluginModule::OnVerticalRaysLengthValueChanged(const float Value)
 {
 	UBubbleSpaceComponent* BubbleSpaceComponent = GetBubbleSpaceComponent();
 	if (BubbleSpaceComponent)
@@ -230,7 +230,7 @@ void FBubbleSpacePluginModule::ToggleDrawVerticalRays()
 	}
 }
 
-float FBubbleSpacePluginModule::GetBubbleSpaceHorizontalRaysDistance()
+float FBubbleSpacePluginModule::GetBubbleSpaceHorizontalRaysLength()
 {
 	UBubbleSpaceComponent* BubbleSpaceComponent = GetBubbleSpaceComponent();
 	if (BubbleSpaceComponent)
@@ -241,7 +241,7 @@ float FBubbleSpacePluginModule::GetBubbleSpaceHorizontalRaysDistance()
 	return 0.f;
 }
 
-float FBubbleSpacePluginModule::GetBubbleSpaceVerticalRaysDistance()
+float FBubbleSpacePluginModule::GetBubbleSpaceVerticalRaysLength()
 {
 	UBubbleSpaceComponent* BubbleSpaceComponent = GetBubbleSpaceComponent();
 	if (BubbleSpaceComponent)

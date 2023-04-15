@@ -30,13 +30,13 @@ protected:
 	
 	virtual UBubbleSpaceComponent* GetBubbleSpaceComponent();
 	
-	virtual void OnHorizontalRaysDistanceValueChanged(const float Value);
+	virtual void OnHorizontalRaysLengthValueChanged(const float Value);
 	
-	virtual void OnVerticalRaysDistanceValueChanged(const float Value);
+	virtual void OnVerticalRaysLengthValueChanged(const float Value);
 	
-	virtual float GetBubbleSpaceHorizontalRaysDistance();
+	virtual float GetBubbleSpaceHorizontalRaysLength();
 	
-	virtual float GetBubbleSpaceVerticalRaysDistance();
+	virtual float GetBubbleSpaceVerticalRaysLength();
 	
 	virtual float GetBubbleSpaceWidthTargetValue();
 	
