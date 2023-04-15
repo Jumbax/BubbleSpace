@@ -193,12 +193,12 @@ float UBubbleSpaceComponent::GetHeightTargetValue() const
 	return BubbleHeight / VerticalRaysDistance;
 }
 
-float UBubbleSpaceComponent::GetHorizontalRaysDistance() const
+float UBubbleSpaceComponent::GetHorizontalRaysLength() const
 {
 	return HorizontalRaysDistance;
 }
 
-void UBubbleSpaceComponent::SetHorizontalRaysDistance(const float InHorizontalRaysDistance)
+void UBubbleSpaceComponent::SetHorizontalRaysLength(const float InHorizontalRaysDistance)
 {
 	if (InHorizontalRaysDistance > 0)
 	{
@@ -206,12 +206,12 @@ void UBubbleSpaceComponent::SetHorizontalRaysDistance(const float InHorizontalRa
 	}
 }
 
-float UBubbleSpaceComponent::GetVerticalRaysDistance() const
+float UBubbleSpaceComponent::GetVerticalRaysLength() const
 {
 	return VerticalRaysDistance;
 }
 
-void UBubbleSpaceComponent::SetVerticalRaysDistance(const float InVerticalRaysDistance)
+void UBubbleSpaceComponent::SetVerticalRaysLength(const float InVerticalRaysDistance)
 {
 	if (InVerticalRaysDistance > 0)
 	{
@@ -249,7 +249,7 @@ void UBubbleSpaceComponent::ShouldDrawShape(const bool InShouldDrawShape)
 	bDrawShape = InShouldDrawShape;
 }
 
-void UBubbleSpaceComponent::ToggleShape()
+void UBubbleSpaceComponent::ToggleDrawShape()
 {
 	bDrawShape = !bDrawShape;
 }

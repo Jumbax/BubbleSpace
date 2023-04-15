@@ -35,7 +35,7 @@ bool FBubbleSpacePluginModule::Exec(UWorld* InWorld, const TCHAR* Cmd, FOutputDe
 		}
 		else if (FParse::Command(&Cmd, TEXT("DrawShape")))
 		{
-			ToggleShape();
+			ToggleDrawShape();
 			return true;
 		}
 		else if (FParse::Command(&Cmd, TEXT("DrawHRays")))
@@ -78,7 +78,7 @@ TSharedRef<SDockTab> FBubbleSpacePluginModule::SpawnBubbleSpaceTab(const FSpawnT
 	+ SVerticalBox::Slot().AutoHeight().HAlign(EHorizontalAlignment::HAlign_Left).Padding(2, 0, 2, 0)
 		[
 			SNew(SButton)
-			.Text(LOCTEXT("ToggleDrawVRayButton", "ToggleDraw Vertical Rays"))
+			.Text(LOCTEXT("ToggleDrawVRayButton", "Toggle Draw Vertical Rays"))
 		.OnClicked_Raw(this, &FBubbleSpacePluginModule::OnClickedToggleDrawVerticalRaysButton)
 		]
 			]
@@ -91,7 +91,7 @@ TSharedRef<SDockTab> FBubbleSpacePluginModule::SpawnBubbleSpaceTab(const FSpawnT
 				+ SVerticalBox::Slot().AutoHeight().HAlign(EHorizontalAlignment::HAlign_Left).Padding(2, 4, 2, 2)
 		[
 			SNew(STextBlock)
-			.Text(LOCTEXT("HorizontalRayText", "Horizontal Rays Distances"))
+			.Text(LOCTEXT("HorizontalRayText", "Horizontal Rays Length"))
 		]
 	+ SVerticalBox::Slot().AutoHeight().Padding(2, 2, 2, 2)
 		[
@@ -103,7 +103,7 @@ TSharedRef<SDockTab> FBubbleSpacePluginModule::SpawnBubbleSpaceTab(const FSpawnT
 	+ SVerticalBox::Slot().AutoHeight().HAlign(EHorizontalAlignment::HAlign_Left).Padding(2, 2, 2, 2)
 		[
 			SNew(STextBlock)
-			.Text(LOCTEXT("VerticalRayText", "Vertical Rays Distances"))
+			.Text(LOCTEXT("VerticalRayText", "Vertical Rays Length"))
 		]
 	+ SVerticalBox::Slot().AutoHeight().Padding(2, 2, 2, 2)
 		[
@@ -147,7 +147,7 @@ TSharedRef<SDockTab> FBubbleSpacePluginModule::SpawnBubbleSpaceTab(const FSpawnT
 
 FReply FBubbleSpacePluginModule::OnClickedToggleShapeButton()
 {
-	ToggleShape();
+	ToggleDrawShape();
 	return FReply::Handled();
 }
 
@@ -190,7 +190,7 @@ void FBubbleSpacePluginModule::OnHorizontalRaysDistanceValueChanged(const float 
 	UBubbleSpaceComponent* BubbleSpaceComponent = GetBubbleSpaceComponent();
 	if (BubbleSpaceComponent)
 	{
-		BubbleSpaceComponent->SetHorizontalRaysDistance(Value);
+		BubbleSpaceComponent->SetHorizontalRaysLength(Value);
 	}
 }
 
@@ -199,16 +199,16 @@ void FBubbleSpacePluginModule::OnVerticalRaysDistanceValueChanged(const float Va
 	UBubbleSpaceComponent* BubbleSpaceComponent = GetBubbleSpaceComponent();
 	if (BubbleSpaceComponent)
 	{
-		BubbleSpaceComponent->SetVerticalRaysDistance(Value);
+		BubbleSpaceComponent->SetVerticalRaysLength(Value);
 	}
 }
 
-void FBubbleSpacePluginModule::ToggleShape()
+void FBubbleSpacePluginModule::ToggleDrawShape()
 {
 	UBubbleSpaceComponent* BubbleSpaceComponent = GetBubbleSpaceComponent();
 	if (BubbleSpaceComponent)
 	{
-		BubbleSpaceComponent->ToggleShape();
+		BubbleSpaceComponent->ToggleDrawShape();
 	}
 }
 
@@ -235,7 +235,7 @@ float FBubbleSpacePluginModule::GetBubbleSpaceHorizontalRaysDistance()
 	UBubbleSpaceComponent* BubbleSpaceComponent = GetBubbleSpaceComponent();
 	if (BubbleSpaceComponent)
 	{
-		return BubbleSpaceComponent->GetHorizontalRaysDistance();
+		return BubbleSpaceComponent->GetHorizontalRaysLength();
 	}
 
 	return 0.f;
@@ -246,7 +246,7 @@ float FBubbleSpacePluginModule::GetBubbleSpaceVerticalRaysDistance()
 	UBubbleSpaceComponent* BubbleSpaceComponent = GetBubbleSpaceComponent();
 	if (BubbleSpaceComponent)
 	{
-		return BubbleSpaceComponent->GetVerticalRaysDistance();
+		return BubbleSpaceComponent->GetVerticalRaysLength();
 	}
 
 	return 0.f;

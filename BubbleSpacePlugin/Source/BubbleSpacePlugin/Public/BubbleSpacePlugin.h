@@ -22,7 +22,7 @@ protected:
 	
 	virtual FReply OnClickedToggleDrawVerticalRaysButton();
 	
-	virtual void ToggleShape();
+	virtual void ToggleDrawShape();
 	
 	virtual void ToggleDrawHorizontalRays();
 	

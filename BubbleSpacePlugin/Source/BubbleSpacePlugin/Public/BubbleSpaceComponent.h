@@ -19,16 +19,16 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Settings")
-		virtual float GetHorizontalRaysDistance() const;
+		virtual float GetHorizontalRaysLength() const;
 
 	UFUNCTION(BlueprintCallable, Category = "Settings")
-		virtual void SetHorizontalRaysDistance(const float InHorizontalRaysDistance);
+		virtual void SetHorizontalRaysLength(const float InHorizontalRaysDistance);
 
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Settings")
-		virtual float GetVerticalRaysDistance() const;
+		virtual float GetVerticalRaysLength() const;
 
 	UFUNCTION(BlueprintCallable, Category = "Settings")
-		virtual void SetVerticalRaysDistance(const float InVerticalRaysDistance);
+		virtual void SetVerticalRaysLength(const float InVerticalRaysDistance);
 
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Settings")
 		virtual bool IsDrawingHorizontalRays() const;
@@ -55,7 +55,7 @@ public:
 		virtual float GetHeightTargetValue() const;
 
 	UFUNCTION(BlueprintCallable, Category = "Debug")
-		virtual void ToggleShape();
+		virtual void ToggleDrawShape();
 
 	UFUNCTION(BlueprintCallable, Category = "Debug")
 		virtual void ToggleDrawHRays();
