@@ -1,6 +1,6 @@
 # BubbleSpace
 
-Hello, in this plugin a BubbleSpaceComponent. The goal of this component is to calculate an area around the actor it is attached to and based on these values to calculate a width and a height that can be used to modify a reverb (or a general game parameter) in order to dinamically adapt to the environment.
+Hello, in this plugin a BubbleSpaceComponent. The goal of this component is to calculate an area around the actor it is attached to and use it to modify a reverb (or a general game parameter) in order to dinamically adapt to the environment.
 
 GIF
 
