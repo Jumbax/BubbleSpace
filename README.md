@@ -8,7 +8,7 @@ You will find a window and a few commands for debug aswell.
 
 ### Features:
 - Use a Width and a Height value to adapt your reverb at runtime
-- Set a custom raycast width length and raycast height length in order to create a custom area
+- Set a raycast width length and raycast height length in order to create a custom area
 - Draw the raycast in order to have a visual response
 - Draw a cone shape to better understand what kind of area you are going to have
 ---
