@@ -90,6 +90,6 @@ You will find a window and a few commands for debug aswell.
 - BubbleSpace DrawVRays: ToggleDrawVRays()
 ---
 
-VIDEO
+### Video
 
 https://user-images.githubusercontent.com/70896924/232341117-ae0e3461-8d88-47b7-82d3-0628530c079b.mp4
