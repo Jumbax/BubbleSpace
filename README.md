@@ -2,7 +2,7 @@
 
 Hello! This is a plugin that I made for Unreal Engine 5 in C++. Here you will find a BubbleSpaceComponent. The goal of this component is to calculate an area around the actor it is attached to and use it to modify a reverb (or a general game parameter) in order to dinamically adapt the audio to the environment.
 
-GIF
+![giphy](https://user-images.githubusercontent.com/70896924/232341106-f27134f7-4d0c-4a47-82e8-5b749d16f0b4.gif)
 
 You will find a window and a few commands for debug aswell.
 
@@ -91,3 +91,5 @@ You will find a window and a few commands for debug aswell.
 ---
 
 VIDEO
+
+https://user-images.githubusercontent.com/70896924/232341117-ae0e3461-8d88-47b7-82d3-0628530c079b.mp4
