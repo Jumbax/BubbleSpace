@@ -32,7 +32,7 @@ You will find a window and a few commands for debug aswell.
 
 ![Cattura7](https://user-images.githubusercontent.com/70896924/232243913-194cc42b-0e9c-4f19-9a82-63ccff4d6e80.png)
 
-- Now you can use the functions GetWidthValueTarget() and GetHeightValueTarget() to get a 0-1 value that change based on environment, use it to modify a reverb volume value like me in the video example or for another kind of parameter
+- Now you can use the functions GetWidthValueTarget() and GetHeightValueTarget() to get two 0-1 values that change based on environment, use it to modify a reverb volume value like me in the video example or for other kind of parameter
 
 ![Cattura8](https://user-images.githubusercontent.com/70896924/232290961-8859788a-ead1-4744-b0c1-72db49295586.PNG)
 
