@@ -14,7 +14,7 @@ You will find a window and a few commands for debug aswell.
 ---
 
 ### Usage:
-- Download the content from LINK
+- Download the content from [here](https://github.com/Jumbax/BubbleSpace/releases/tag/v1.0.0)
 - Drag and drop the folder inside your plugin folder
 
 ![Cattura](https://user-images.githubusercontent.com/70896924/232243301-7dfcb76d-27df-4e52-9c24-e20f15bc868a.png)
