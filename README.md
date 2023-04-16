@@ -34,6 +34,8 @@ You will find a window and a few commands for debug aswell.
 
 - Now you can use the functions GetWidthValueTarget() and GetHeightValueTarget() to get a 0-1 value that change based on environment, use it to modify a reverb volume value like me in the video example or for another kind of parameter
 
+![Cattura8](https://user-images.githubusercontent.com/70896924/232290961-8859788a-ead1-4744-b0c1-72db49295586.PNG)
+
 ---
 
 ### Properties:
@@ -87,3 +89,5 @@ You will find a window and a few commands for debug aswell.
 - BubbleSpace DrawHRays: Call ToggleDrawHRays()
 - BubbleSpace DrawVRays: ToggleDrawVRays()
 ---
+
+VIDEO
