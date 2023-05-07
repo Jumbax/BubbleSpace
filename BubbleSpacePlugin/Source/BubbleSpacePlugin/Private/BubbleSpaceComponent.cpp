@@ -18,15 +18,18 @@ void UBubbleSpaceComponent::TickComponent(float DeltaTime, ELevelTick TickType, 
 	EvaluateWidth();
 	EvaluateHeight();
 	LerpWidthHeightTargetValue();
+
+#ifdef UE_BUILD_DEBUG
 	DrawShape();
+#endif // UE_BUILD_DEBUG
 }
 
 void UBubbleSpaceComponent::DoHorizontalRay(const float Offset)
 {
 	FHitResult HitResult;
-	FVector Start = GetComponentLocation();
-	FVector RotationOffset = GetOwner()->GetActorForwardVector().RotateAngleAxis(Offset, FVector::UpVector) * HorizontalRaysLength;
-	FVector End = Start + RotationOffset;
+	const FVector Start = GetComponentLocation();
+	const FVector RotationOffset = GetOwner()->GetActorForwardVector().RotateAngleAxis(Offset, FVector::UpVector) * HorizontalRaysLength;
+	const FVector End = Start + RotationOffset;
 	FCollisionQueryParams Params;
 	Params.AddIgnoredActor(GetOwner());
 
@@ -38,19 +41,21 @@ void UBubbleSpaceComponent::DoHorizontalRay(const float Offset)
 	{
 		HorizontalDistances.Add(HorizontalRaysLength);
 	}
+
+#ifdef UE_BUILD_DEBUG
 	if (bDrawHorizontalRays)
 	{
 		DrawDebugLine(GetWorld(), Start, End, FColor::Green, false, -1.0f, 0, 2.f);
 	}
-
+#endif // UE_BUILD_DEBUG
 }
 
 void UBubbleSpaceComponent::DoHorizontalRays()
 {
 	float AngleOffset = 0.0f;
-	for (int32 i = 0; i < 4; i++)
+	for (uint8 i = 0; i < 4; i++)
 	{
-		for (int32 j = 0; j < 3; j++)
+		for (uint8 j = 0; j < 3; j++)
 		{
 			DoHorizontalRay(AngleOffset);
 			AngleOffset += 120.f;
@@ -69,8 +74,8 @@ void UBubbleSpaceComponent::EvaluateHorizontalAvarageDistance()
 	}
 	HorizontalDistances.Sort();
 	float AvarageDistance = 0.f;
-	int MinValue = FGenericPlatformMath::Min(HorizontalDistances.Num(), 2);
-	for (int32 i = 0; i < MinValue; i++)
+	const uint8 MinValue = FGenericPlatformMath::Min(HorizontalDistances.Num(), 2);
+	for (uint8 i = 0; i < MinValue; i++)
 	{
 		AvarageDistance += HorizontalDistances[i];
 	}
@@ -86,8 +91,8 @@ float UBubbleSpaceComponent::EvaluateHorizontalTargetValue()
 	}
 	float TargetValue = 0.f;
 	HorizontalAvaragesDistance.Sort();
-	int MinValue = FGenericPlatformMath::Min(HorizontalAvaragesDistance.Num(), 3);
-	for (int32 i = 0; i < MinValue; i++)
+	const uint8 MinValue = FGenericPlatformMath::Min(HorizontalAvaragesDistance.Num(), 3);
+	for (uint8 i = 0; i < MinValue; i++)
 	{
 		TargetValue += HorizontalAvaragesDistance[i];
 	}
@@ -105,9 +110,9 @@ void UBubbleSpaceComponent::EvaluateWidth()
 void UBubbleSpaceComponent::DoVerticalRay(const float Offset)
 {
 	FHitResult HitResult;
-	FVector Start = GetComponentLocation() + GetOwner()->GetActorForwardVector().RotateAngleAxis(Offset, FVector::UpVector) * 100.f;
-	FVector Direction = GetOwner()->GetActorUpVector();
-	FVector End = Start + Direction * VerticalRaysLength;
+	const FVector Start = GetComponentLocation() + GetOwner()->GetActorForwardVector().RotateAngleAxis(Offset, FVector::UpVector) * 100.f;
+	const FVector Direction = GetOwner()->GetActorUpVector();
+	const FVector End = Start + Direction * VerticalRaysLength;
 	FCollisionQueryParams Params;
 	Params.AddIgnoredActor(GetOwner());
 
@@ -119,16 +124,19 @@ void UBubbleSpaceComponent::DoVerticalRay(const float Offset)
 	{
 		VerticalDistances.Add(VerticalRaysLength);
 	}
+
+#ifdef UE_BUILD_DEBUG
 	if (bDrawVerticalRays)
 	{
 		DrawDebugLine(GetWorld(), Start, End, FColor::Green, false, -1.0f, 0, 2.f);
 	}
+#endif // UE_BUILD_DEBUG
 }
 
 void UBubbleSpaceComponent::DoVerticalRays()
 {
 	float AngleOffset = 0.0f;
-	for (int32 j = 0; j < 3; j++)
+	for (uint8 j = 0; j < 3; j++)
 	{
 		DoVerticalRay(AngleOffset);
 		AngleOffset += 120.f;
@@ -143,8 +151,8 @@ float UBubbleSpaceComponent::EvaluateVerticalTargetValue()
 	}
 	float TargetValue = 0.f;
 	VerticalDistances.Sort();
-	int MinValue = FGenericPlatformMath::Min(VerticalDistances.Num(), 3);
-	for (int32 i = 0; i < MinValue; i++)
+	const uint8 MinValue = FGenericPlatformMath::Min(VerticalDistances.Num(), 3);
+	for (uint8 i = 0; i < MinValue; i++)
 	{
 		TargetValue += VerticalDistances[i];
 	}
@@ -161,8 +169,8 @@ void UBubbleSpaceComponent::EvaluateHeight()
 
 void UBubbleSpaceComponent::LerpWidthHeightTargetValue()
 {
-	float TargetWidth = OldBubbleWidth > 0 ? OldBubbleWidth : HorizontalRaysLength;
-	float TargetHeight = OldBubbleHeight > 0 ? OldBubbleHeight : VerticalRaysLength;
+	const float TargetWidth = OldBubbleWidth > 0 ? OldBubbleWidth : HorizontalRaysLength;
+	const float TargetHeight = OldBubbleHeight > 0 ? OldBubbleHeight : VerticalRaysLength;
 	FrameCount++;
 	if (FrameCount >= 16)
 	{
@@ -176,9 +184,9 @@ void UBubbleSpaceComponent::DrawShape()
 {
 	if (bDrawShape)
 	{
-		FVector Start = GetOwner()->GetActorLocation() + GetOwner()->GetActorUpVector() * 150.f;
-		float ConeSize = FMath::GetMappedRangeValueClamped(FVector2D(0.f, HorizontalRaysLength), FVector2D(1.f, 70.f), BubbleWidth);
-		float ConeLength = FMath::GetMappedRangeValueClamped(FVector2D(0.f, VerticalRaysLength), FVector2D(30.f, 70.f), BubbleHeight);
+		const FVector Start = GetOwner()->GetActorLocation() + GetOwner()->GetActorUpVector() * 150.f;
+		const float ConeSize = FMath::GetMappedRangeValueClamped(FVector2D(0.f, HorizontalRaysLength), FVector2D(1.f, 70.f), BubbleWidth);
+		const float ConeLength = FMath::GetMappedRangeValueClamped(FVector2D(0.f, VerticalRaysLength), FVector2D(30.f, 70.f), BubbleHeight);
 		DrawDebugCone(GetWorld(), Start, -GetOwner()->GetActorUpVector(), ConeLength, FMath::DegreesToRadians(ConeSize), FMath::DegreesToRadians(ConeSize), 12, FColor::Green, false, -1.f, 0, 2.f);
 	}
 }
