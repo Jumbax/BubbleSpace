@@ -20,7 +20,7 @@ You will find a window and a few commands for debug aswell.
 ![Cattura](https://user-images.githubusercontent.com/70896924/232243301-7dfcb76d-27df-4e52-9c24-e20f15bc868a.png)
 
 (If you haven’t this folder create a plugin following this guide to create it: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/Plugins/)
-- Add the string “AudioSplinePlugin” to your Build.cs file like this
+- Add the string “BubbleSpacePlugin” to your Build.cs file like this
 
 ![Cattura3](https://user-images.githubusercontent.com/70896924/232243575-bb49994a-c182-43dd-969e-4c94c8586de7.png)
 
